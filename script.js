@@ -41,9 +41,10 @@ const teamCounts = [
   document.getElementById('count-c'),
 ];
 
-const matchOrderEl = document.getElementById('match-order');
-const matchVsEl    = document.getElementById('match-vs');
-const matchRestEl  = document.getElementById('match-rest');
+const matchOrderEl   = document.getElementById('match-order');
+const matchVsEl      = document.getElementById('match-vs');
+const matchKickoffEl = document.getElementById('match-kickoff');
+const matchRestEl    = document.getElementById('match-rest');
 
 /* ─── localStorage helpers ────────────────────────────────────────────── */
 
@@ -194,8 +195,11 @@ function renderTeams(teams) {
   const second = shuffledIdx[1];
   const sitsOut = shuffledIdx[2];
 
-  matchVsEl.textContent   = `${teamEmojis[first]} ${teamNames[first]}  vs  ${teamNames[second]} ${teamEmojis[second]}`;
-  matchRestEl.textContent = `${teamEmojis[sitsOut]} ${teamNames[sitsOut]}`;
+  const kickoff = Math.random() < 0.5 ? first : second;
+
+  matchVsEl.textContent      = `${teamEmojis[first]} ${teamNames[first]}  vs  ${teamNames[second]} ${teamEmojis[second]}`;
+  matchKickoffEl.textContent = `${teamEmojis[kickoff]} ${teamNames[kickoff]}`;
+  matchRestEl.textContent    = `${teamEmojis[sitsOut]} ${teamNames[sitsOut]}`;
   matchOrderEl.hidden = false;
 
   teamsSection.hidden = false;

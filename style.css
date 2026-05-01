@@ -316,6 +316,7 @@ main {
 }
 
 .match-first,
+.match-kickoff,
 .match-sits-out {
   display: flex;
   flex-direction: column;
@@ -333,6 +334,12 @@ main {
 
 .match-vs {
   font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.match-kickoff-team {
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--text);
 }
