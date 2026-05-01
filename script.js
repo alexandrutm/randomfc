@@ -41,6 +41,10 @@ const teamCounts = [
   document.getElementById('count-c'),
 ];
 
+const matchOrderEl = document.getElementById('match-order');
+const matchVsEl    = document.getElementById('match-vs');
+const matchRestEl  = document.getElementById('match-rest');
+
 /* ─── localStorage helpers ────────────────────────────────────────────── */
 
 /** Save all pot textarea values to localStorage. */
@@ -182,6 +186,18 @@ function renderTeams(teams) {
     teamCounts[ti].textContent = `${team.length} player${team.length !== 1 ? 's' : ''}`;
   });
 
+  // Randomly determine match order
+  const teamNames   = ['Team A', 'Team B', 'Team C'];
+  const teamEmojis  = ['🔴', '🔵', '🟢'];
+  const shuffledIdx = shuffle([0, 1, 2]);
+  const first  = shuffledIdx[0];
+  const second = shuffledIdx[1];
+  const sitsOut = shuffledIdx[2];
+
+  matchVsEl.textContent   = `${teamEmojis[first]} ${teamNames[first]}  vs  ${teamNames[second]} ${teamEmojis[second]}`;
+  matchRestEl.textContent = `${teamEmojis[sitsOut]} ${teamNames[sitsOut]}`;
+  matchOrderEl.hidden = false;
+
   teamsSection.hidden = false;
   shuffleBtn.hidden   = false;
   teamsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -221,8 +237,9 @@ function onReset() {
   if (!confirm('Clear all players and reset?')) return;
 
   potInputs.forEach(el => (el.value = ''));
-  teamsSection.hidden = true;
-  shuffleBtn.hidden   = true;
+  teamsSection.hidden  = true;
+  shuffleBtn.hidden    = true;
+  matchOrderEl.hidden  = true;
   hideError();
 
   try {

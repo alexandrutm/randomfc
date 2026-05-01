@@ -299,6 +299,59 @@ main {
 .dot-4 { background: var(--pot4); }
 .dot-5 { background: var(--pot5); }
 
+/* ─── Match order ────────────────────────────────────────────────────── */
+.match-order {
+  margin-top: 24px;
+}
+
+.match-card {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 32px;
+  animation: slideUp 0.35s ease;
+}
+
+.match-first,
+.match-sits-out {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.match-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+.match-vs {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.match-rest {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .match-card {
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px 20px;
+  }
+}
+
 /* ─── Animations ─────────────────────────────────────────────────────── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-4px); }
