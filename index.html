@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RandomFC – Football Team Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>⚽ RandomFC</h1>
+    <p class="subtitle">Generate 3 balanced football teams from skill-based pots</p>
+  </header>
+
+  <main>
+
+    <!-- ── Pots ─────────────────────────────────────────────────────── -->
+    <section class="pots-section">
+      <div class="pots-grid">
+
+        <div class="pot-card">
+          <div class="pot-header pot-1-bg">
+            <span class="pot-icon">🥇</span>
+            <div>
+              <h2 class="pot-title">Pot 1</h2>
+              <p class="pot-desc">Elite</p>
+            </div>
+          </div>
+          <textarea
+            id="pot-1"
+            class="pot-input"
+            placeholder="e.g. Messi, Ronaldo, Neymar"
+            rows="4"
+            aria-label="Pot 1 players"
+          ></textarea>
+        </div>
+
+        <div class="pot-card">
+          <div class="pot-header pot-2-bg">
+            <span class="pot-icon">🥈</span>
+            <div>
+              <h2 class="pot-title">Pot 2</h2>
+              <p class="pot-desc">Strong</p>
+            </div>
+          </div>
+          <textarea
+            id="pot-2"
+            class="pot-input"
+            placeholder="e.g. Benzema, Salah, Kane"
+            rows="4"
+            aria-label="Pot 2 players"
+          ></textarea>
+        </div>
+
+        <div class="pot-card">
+          <div class="pot-header pot-3-bg">
+            <span class="pot-icon">⚽</span>
+            <div>
+              <h2 class="pot-title">Pot 3</h2>
+              <p class="pot-desc">Average</p>
+            </div>
+          </div>
+          <textarea
+            id="pot-3"
+            class="pot-input"
+            placeholder="e.g. Griezmann, Mane, Son"
+            rows="4"
+            aria-label="Pot 3 players"
+          ></textarea>
+        </div>
+
+        <div class="pot-card">
+          <div class="pot-header pot-4-bg">
+            <span class="pot-icon">🎽</span>
+            <div>
+              <h2 class="pot-title">Pot 4</h2>
+              <p class="pot-desc">Casual</p>
+            </div>
+          </div>
+          <textarea
+            id="pot-4"
+            class="pot-input"
+            placeholder="e.g. Giroud, Dembele, Werner"
+            rows="4"
+            aria-label="Pot 4 players"
+          ></textarea>
+        </div>
+
+        <div class="pot-card">
+          <div class="pot-header pot-5-bg">
+            <span class="pot-icon">🌱</span>
+            <div>
+              <h2 class="pot-title">Pot 5</h2>
+              <p class="pot-desc">Beginner</p>
+            </div>
+          </div>
+          <textarea
+            id="pot-5"
+            class="pot-input"
+            placeholder="e.g. Batshuayi, Diaz, Augustin"
+            rows="4"
+            aria-label="Pot 5 players"
+          ></textarea>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Action buttons ─────────────────────────────────────────────── -->
+    <section class="actions">
+      <button class="btn btn-generate" id="generate-btn">
+        🎲 Generate Teams
+      </button>
+      <button class="btn btn-shuffle" id="shuffle-btn" hidden>
+        🔀 Shuffle Again
+      </button>
+      <button class="btn btn-reset" id="reset-btn">
+        ↺ Reset
+      </button>
+    </section>
+
+    <!-- ── Error banner ────────────────────────────────────────────────── -->
+    <p class="error-msg" id="error-msg" hidden></p>
+
+    <!-- ── Teams result ────────────────────────────────────────────────── -->
+    <section class="teams-section" id="teams-section" hidden>
+      <h2 class="teams-heading">Teams</h2>
+      <div class="teams-grid">
+
+        <div class="team-card team-a">
+          <div class="team-header">
+            <span class="team-badge">🔴</span>
+            <h3>Team A</h3>
+            <span class="team-count" id="count-a"></span>
+          </div>
+          <ul class="team-list" id="team-a"></ul>
+        </div>
+
+        <div class="team-card team-b">
+          <div class="team-header">
+            <span class="team-badge">🔵</span>
+            <h3>Team B</h3>
+            <span class="team-count" id="count-b"></span>
+          </div>
+          <ul class="team-list" id="team-b"></ul>
+        </div>
+
+        <div class="team-card team-c">
+          <div class="team-header">
+            <span class="team-badge">🟢</span>
+            <h3>Team C</h3>
+            <span class="team-count" id="count-c"></span>
+          </div>
+          <ul class="team-list" id="team-c"></ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>RandomFC &copy; 2024 – Fair teams, great games</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+/* ─── Reset & base ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Pot colours */
+  --pot1: #e74c3c;
+  --pot2: #e67e22;
+  --pot3: #3498db;
+  --pot4: #9b59b6;
+  --pot5: #1abc9c;
+
+  /* Neutrals */
+  --bg:       #f0f2f5;
+  --surface:  #ffffff;
+  --border:   #e2e6ea;
+  --text:     #212529;
+  --muted:    #6c757d;
+
+  /* Spacing & shape */
+  --radius: 14px;
+  --shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  --gap:    16px;
+
+  /* Transitions */
+  --ease: 0.2s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Ensure the HTML `hidden` attribute is never overridden by display rules */
+[hidden] { display: none !important; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding-bottom: 48px;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────── */
+header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  color: #fff;
+  text-align: center;
+  padding: 36px 24px 28px;
+}
+
+header h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  opacity: 0.65;
+}
+
+/* ─── Main ───────────────────────────────────────────────────────────── */
+main {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 28px 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ─── Pots grid ──────────────────────────────────────────────────────── */
+.pots-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--gap);
+}
+
+/* ─── Pot card ───────────────────────────────────────────────────────── */
+.pot-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pot-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  color: #fff;
+}
+
+.pot-1-bg { background: var(--pot1); }
+.pot-2-bg { background: var(--pot2); }
+.pot-3-bg { background: var(--pot3); }
+.pot-4-bg { background: var(--pot4); }
+.pot-5-bg { background: var(--pot5); }
+
+.pot-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+.pot-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pot-desc {
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+.pot-input {
+  flex: 1;
+  width: 100%;
+  padding: 12px 12px;
+  border: none;
+  border-top: 1px solid var(--border);
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  transition: background var(--ease);
+  min-height: 100px;
+}
+
+.pot-input:focus {
+  background: #f8fff8;
+}
+
+.pot-input::placeholder {
+  color: #bbb;
+  font-style: italic;
+}
+
+/* ─── Action buttons ─────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 30px;
+  border: none;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--ease), box-shadow var(--ease), opacity var(--ease);
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-generate {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  color: #fff;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 20px rgba(253, 160, 133, 0.4);
+}
+
+.btn-generate:hover {
+  box-shadow: 0 8px 28px rgba(253, 160, 133, 0.55);
+  transform: translateY(-1px);
+}
+
+.btn-shuffle {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(67, 233, 123, 0.35);
+}
+
+.btn-shuffle:hover {
+  box-shadow: 0 8px 28px rgba(67, 233, 123, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-reset {
+  background: var(--surface);
+  color: var(--muted);
+  border: 2px solid var(--border);
+}
+
+.btn-reset:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+/* ─── Error message ──────────────────────────────────────────────────── */
+.error-msg {
+  text-align: center;
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: fadeIn 0.25s ease;
+}
+
+/* ─── Teams section ──────────────────────────────────────────────────── */
+.teams-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+
+/* ─── Team card ──────────────────────────────────────────────────────── */
+.team-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: slideUp 0.35s ease;
+}
+
+.team-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  color: #fff;
+}
+
+.team-a .team-header { background: #e74c3c; }
+.team-b .team-header { background: #3498db; }
+.team-c .team-header { background: #27ae60; }
+
+.team-header h3 {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.team-badge { font-size: 1.4rem; }
+
+.team-count {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+
+.team-list {
+  list-style: none;
+  padding: 8px 0;
+}
+
+.team-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  font-size: 0.92rem;
+  border-bottom: 1px solid var(--border);
+  animation: fadeIn 0.2s ease both;
+}
+
+.team-list li:last-child { border-bottom: none; }
+
+/* Coloured dot shows which pot the player came from */
+.pot-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-1 { background: var(--pot1); }
+.dot-2 { background: var(--pot2); }
+.dot-3 { background: var(--pot3); }
+.dot-4 { background: var(--pot4); }
+.dot-5 { background: var(--pot5); }
+
+/* ─── Animations ─────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────── */
+footer {
+  margin-top: 48px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  opacity: 0.7;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .teams-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .pots-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
